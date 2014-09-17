@@ -5,7 +5,6 @@ class SwedishPersonalNumber
 
   attr_accessor :personal_number, :birth_date
   def initialize(personal_number)
-    @raw_personal_number = personal_number
     @personal_number = personal_number.tr("-", "")
     @birth_date = valid_format? ? DateParser.new(personal_number[0..-5]).to_date : nil
   end
@@ -20,10 +19,6 @@ class SwedishPersonalNumber
 
   def of_underage_person?
     birth_date > 18.years.ago
-  end
-
-  def as_json
-    @raw_personal_number
   end
 
   private

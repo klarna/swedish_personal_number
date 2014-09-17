@@ -10,13 +10,6 @@ describe SwedishPersonalNumber do
     end
   end
 
-  describe ".as_json" do
-    it "should return the given personal number" do
-      SwedishPersonalNumber.new("130101-0000").as_json.must_equal "130101-0000"
-      SwedishPersonalNumber.new("1301010000").as_json.must_equal "1301010000"
-    end
-  end
-
   describe ".birth_date" do
 
     it "should return valid date on valid 10 digit personal number in this century" do
