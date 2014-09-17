@@ -6,3 +6,4 @@ gemspec
 gem 'minitest'
 gem 'pry'
 gem 'treetop'
+gem 'activesupport'

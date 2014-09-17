@@ -1,15 +1,29 @@
 require "swedish_personal_number/version"
+require "active_support/core_ext"
 
 class SwedishPersonalNumber
 
   attr_accessor :personal_number, :birth_date
   def initialize(personal_number)
-    @personal_number = personal_number
-    @birth_date = valid_format? && DateParser.new(personal_number[0..-5]).to_date
+    @raw_personal_number = personal_number
+    @personal_number = personal_number.tr("-", "")
+    @birth_date = valid_format? ? DateParser.new(personal_number[0..-5]).to_date : nil
   end
 
   def valid_format?
-    !personal_number.nil? && personal_number.match(/\A\d{10,12}\z/)
+    !personal_number.nil? && !personal_number.match(/\A\d{10,12}\z/).nil?
+  end
+
+  def valid?
+    !!birth_date
+  end
+
+  def of_underage_person?
+    birth_date > 18.years.ago
+  end
+
+  def as_json
+    @raw_personal_number
   end
 
   private
@@ -41,4 +55,3 @@ class SwedishPersonalNumber
   end
 
 end
-
