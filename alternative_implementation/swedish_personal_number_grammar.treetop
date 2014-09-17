@@ -1,0 +1,33 @@
+grammar SwedishPersonalNumberGrammar
+  rule personal_number
+    (date_part:full_date checksum / date_part:short_date checksum) <PersonalNumber>
+  end
+
+  rule full_date
+    year:full_year month day <DateConverter>
+  end
+
+  rule short_date
+    year:short_year month day <DateConverter>
+  end
+
+  rule full_year
+    ('19' / '20') [0-9] [0-9] <IntConverter>
+  end
+
+  rule short_year
+    [0-9] [0-9] <ShortYear>
+  end
+
+  rule month
+    ([0] [1-9] / [1] [0-2]) <IntConverter>
+  end
+
+  rule day
+    ([0] [1-9] / [12] [0-9] / [3] [0-1]) <IntConverter>
+  end
+
+  rule checksum
+    [0-9] 4..4
+  end
+end
