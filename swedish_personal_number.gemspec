@@ -2,7 +2,7 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'swedish_personal_number/version'
-
+# tests testst set
 Gem::Specification.new do |spec|
   spec.name          = "swedish_personal_number"
   spec.version       = SwedishPersonalNumber::VERSION
