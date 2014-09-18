@@ -1,6 +1,8 @@
+[![Code Climate](https://codeclimate.com/github/klarna/swedish_personal_number/badges/gpa.svg)](https://codeclimate.com/github/klarna/swedish_personal_number)
+
 # SwedishPersonalNumber
 
-TODO: Write a gem description
+A Value Object with convenience helpers for [Swedish personal numbers](http://en.wikipedia.org/wiki/Personal_identity_number_(Sweden)) (personnummer).
 
 ## Installation
 
@@ -14,13 +16,20 @@ And then execute:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install swedish_personal_number
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+pno = SwedishPersonalNumber.new("660101-0034")
+pno.valid?
+pno.birth_date # returns Date instance
+pno.of_underage_person?
+```
+## Roadmap
+
+  - Make it behave like a real Value Object (i.e. to be intercheangeable for a String)
+  - Add checksum validation ([something like that](https://github.com/rolfb/luhn-ruby/blob/master/lib/luhn.rb))
+  - Evaluate if we should use a proper parser for this (like in the alternative_implementation).
 
 ## Contributing
 
