@@ -9,7 +9,7 @@ A Value Object with convenience helpers for [Swedish personal numbers](http://en
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'swedish_personal_number'
+gem 'swedish_personal_number', github: 'klarna/swedish_personal_number'
 ```
 
 And then execute:
